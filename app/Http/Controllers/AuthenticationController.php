@@ -7,16 +7,29 @@ use App\Http\Controllers\Controller;
 use Lcobucci\JWT\Parser;
 
 use App\User;
+use App\Categories;
+use App\Challenges;
+use App\Content;
+
 
 class AuthenticationController extends Controller
 {
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $user = User::where('email', $request->email)->first();
-
+        $categories = Categories::all();
+        $challenges = Challenges::all();
+        $content = Content::all();
         if ($user) {
             if ($user->validateForPassportPasswordGrant($request->password) == $user->password) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
+                $response = [
+                    'token' => $token,
+                    'user' => $user,
+                    'categories' => $categories,
+                    'challenges' => $challenges,
+                    'content' => $content
+                ];
                 return response($response, 200);
             } else {
                 $response = 'Password mismatch';
@@ -31,11 +44,43 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
-        $request->user()->token()->delete(); 
+        $request->user()->token()->delete();
 
         $response = 'You have been successfully logged out!';
         return response($response, 200);
     }
+    
+    function register(Request $request)
+    {
+        /**
+         * Get a validator for an incoming registration request.
+         *
+         * @param  array  $request
+         * @return \Illuminate\Contracts\Validation\Validator
+         */
+        $valid = validator($request->only('email', 'name', 'password'), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
 
+        if ($valid->fails()) {
+            $jsonError = response()->json($valid->errors()->all(), 400);
+            return \Response::json($jsonError);
+        }
 
+        $data = request()->only('email', 'name', 'password');
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        $request = new Request([
+            'email' => $data['email'],
+            'password' => $data['password']
+        ]);
+        return self::login($request);
+    }
 }

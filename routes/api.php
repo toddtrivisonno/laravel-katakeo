@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/register', 'RegistrationController@create');
-Route::post('/register', 'Auth\RegisterController@register');
+// Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/register', 'AuthenticationController@register');
 
 Route::post('/login','AuthenticationController@login')->name('login');
 
