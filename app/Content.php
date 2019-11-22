@@ -8,6 +8,6 @@ class Content extends Model
 {
     //
     public function challenge() {
-        return $this->belongsTo('App\Challenge');
+        return $this->belongsTo('App\Challenges');
     }
 }

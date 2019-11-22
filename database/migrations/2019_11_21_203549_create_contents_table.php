@@ -16,6 +16,7 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('challenge_id');
+            $table->string('petition')->nullable();
             $table->string('initial_question')->nullable();
             $table->string('statement', 1000)->nullable();
             $table->string('following_question')->nullable();
