@@ -12,7 +12,7 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        $array = ['Books of the Bible', 'The Ten Commandments', 'The Creed', 'The Lord\'s Prayer', 'The Sacrament Holy Baptism', 'Confession', 'The Sacrament of the Altar', 'Bible Verses'];
+        $array = ['The Ten Commandments', 'The Creed', 'The Lord\'s Prayer', 'The Sacrament Holy Baptism', 'Confession', 'The Sacrament of the Altar', 'Bible Verses','Books of the Bible'];
 
         foreach ($array as $item) {
             Categories::create([
