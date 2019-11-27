@@ -130,6 +130,12 @@ class ChallengesSeeder extends Seeder
             [
                 'name' => 'Who receives this sacrament worthily?', 'category' => 6
             ],
+            [
+                'name' => 'Old Testament', 'category' => 7
+            ],
+            [
+                'name' => 'New Testament', 'category' => 7
+            ]
         ];
 
         foreach ($array as $item) {

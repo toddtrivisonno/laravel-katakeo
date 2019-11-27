@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 use Lcobucci\JWT\Parser;
 
 use App\User;
-use App\Categories;
-use App\Challenges;
-use App\Content;
+
 
 
 class AuthenticationController extends Controller
@@ -17,28 +15,12 @@ class AuthenticationController extends Controller
     public function login(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-        $categories = Categories::all();
-        $fullContent = [];
-        foreach ($categories as $category) {
-            $unique_chal = Challenges::where('category_id', $category->id)->get();
-            // array_push($challenges,$unique_chal);
-            foreach ($unique_chal as $chall) {
-                $content = Content::where('challenge_id', $chall->id)->get();
-                $chall['content'] = $content[0];
-            }
-            $fullContent[$category->category_type] = $unique_chal;
-        }
-        // dd($challenges);
-        // $content = Content::all();
         if ($user) {
             if ($user->validateForPassportPasswordGrant($request->password) == $user->password) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 $response = [
                     'token' => $token,
                     'user' => $user,
-                    // 'categories' => $categories,
-                    'fullContent' => $fullContent,
-                    // 'content' => $content
                 ];
                 return response($response, 200);
             } else {

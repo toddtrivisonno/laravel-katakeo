@@ -18,6 +18,8 @@ Route::post('/register', 'AuthenticationController@register');
 
 Route::post('/login','AuthenticationController@login')->name('login');
 
+Route::get('/getFullContent','ContentController@getFullContent');
+
 Route::middleware('auth:api')->group(function () {
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
     Route::get('/users', 'UserController@index');
