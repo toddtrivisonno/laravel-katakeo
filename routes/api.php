@@ -13,7 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+// Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/register', 'AuthenticationController@register');
+
 Route::post('/login','AuthenticationController@login')->name('login');
+
+Route::get('/getFullContent','ContentController@getFullContent');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/logout', 'AuthenticationController@logout')->name('logout');
