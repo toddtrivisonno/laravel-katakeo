@@ -154,8 +154,8 @@ class ContentsSeeder extends Seeder
                 'petition' => 'Thy kingdom come.',
                 'init_question' =>  'What does this mean?',
                 'statement' => 'The kingdom of God certainly comes by itself without our prayer, but we pray in this petition that it may come to us also.',
-                'follow_question' => null,
-                'answer' => null
+                'follow_question' => 'How does God\'s kingdom come?',
+                'answer' => 'God\'s kingdom comes when our heavenly Father gives us His Holy Spirit, so that by His grace we believe His holy Word and lead godly lives here in time and there in eternity.'
             ],
             [
                 'challenge' => 19,
@@ -338,6 +338,14 @@ class ContentsSeeder extends Seeder
                 'petition' => null,
                 'init_question' =>  null,
                 'statement' => 'Matthew, Mark, Luke, John, Acts, Romans, 1 Corinthians, 2 Corinthians, Galatians, Ephesians, Philippians, Colossians, 1 Thessalonians, 2 Thessalonians, 1 Timothy, 2 Timothy, Titus, Philemon, Hebrews, James, 1 Peter, 2 Peter, 1 John, 2 John, 3 John, Jude, Revelation',
+                'follow_question' => null,
+                'answer' => null
+            ],
+            [
+                'challenge' => 42,
+                'petition' => 'Bible verses will go here',
+                'init_question' =>  null,
+                'statement' => null,
                 'follow_question' => null,
                 'answer' => null
             ]

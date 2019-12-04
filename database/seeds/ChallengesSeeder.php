@@ -135,6 +135,9 @@ class ChallengesSeeder extends Seeder
             ],
             [
                 'name' => 'New Testament', 'category' => 7
+            ],
+            [
+                'name' => 'Enter a passage: ', 'category' => 8
             ]
         ];
 
