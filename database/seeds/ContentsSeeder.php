@@ -99,7 +99,7 @@ class ContentsSeeder extends Seeder
                 'init_question' =>  'What does God say about all these commandments?',
                 'statement' => `He says, “I, the Lord your God, am a jealous God, punishing the children for the sin of the fathers to the third and fourth generation of those who hate Me, but showing love to a thousand generations of those who love Me and keep My commandments.”`,
                 'follow_question' => 'What does this mean?',
-                'answer' => 'God threatens to punish all who break these commandments. Therefore, we should fear His wrath and not do anything against them. But He promises grace and every blessing to all who keep these commandments.Therefore, we should also love and trust in Him and gladly do what He commands.'
+                'answer' => 'God threatens to punish all who break these commandments. Therefore, we should fear His wrath and not do anything against them. But He promises grace and every blessing to all who keep these commandments. Therefore, we should also love and trust in Him and gladly do what He commands.'
             ],
             [
                 'challenge' => 12,
